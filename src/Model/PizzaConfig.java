@@ -11,6 +11,7 @@ import java.io.Serializable;
  *
  * @author Ntwali
  */
+
 public class PizzaConfig implements Serializable{
     
     
