@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -31,6 +33,10 @@ public class OptionSet implements Serializable {
     private Set<Option> options = new HashSet<>();
     
     
+        @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", nullable = true)
+    private PizzaConfig pizzaConfig;
+    
 
     public String getName() {
         return name;
@@ -46,6 +52,14 @@ public class OptionSet implements Serializable {
 
     public void setOptions(Set<Option> options) {
         this.options = options;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     

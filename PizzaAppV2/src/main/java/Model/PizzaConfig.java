@@ -6,35 +6,62 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Ntwali
  */
+@Entity
 public class PizzaConfig implements Serializable{
-    
-    
+
+        @Id
+    private Long id;
+        
     private double baseprice;   
     private String size;
     
     private double delivery;
     private String name;
-    private OptionSet[] optionsets; 
+    
+   @OneToMany(fetch = FetchType.LAZY, mappedBy = "pizzaConfig")
+    private Set<OptionSet> optionSets = new HashSet<>();
+
+    public PizzaConfig(Long id, double baseprice, String size, double delivery, String name) {
+        this.id = id;
+        this.baseprice = baseprice;
+        this.size = size;
+        this.delivery = delivery;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<OptionSet> getOptionSets() {
+        return optionSets;
+    }
+
+    public void setOptionSets(Set<OptionSet> optionSets) {
+        this.optionSets = optionSets;
+    }
     
     
     public PizzaConfig(){
         
     }
 
-    public PizzaConfig(double baseprice,String size,double delivery,String name,OptionSet[] optionsets){
-        
-        this.baseprice = baseprice;
-        this.size   = size;
-        this.delivery = delivery;
-        this.name     = name;
-        this.optionsets = optionsets;
  
-    }
 
     public double getBaseprice() {
         return baseprice;
@@ -68,25 +95,19 @@ public class PizzaConfig implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-   public OptionSet[] getOptionsets() {
-        return optionsets;
-    }
 
-    public void setOptionsets(String name,String[] option,double totalPrice) {
-        this.optionsets = optionsets;
-    }
     
-    public void find(String name ){
-        
-    }
-    
-    public void delete(){
-        
-    }
-    
-    public void update(){
-        
-    }
+//    public void find(String name ){
+//        
+//    }
+//    
+//    public void delete(){
+//        
+//    }
+//    
+//    public void update(){
+//        
+//    }
 
     @Override
     public String toString() {
