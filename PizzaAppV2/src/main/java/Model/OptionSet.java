@@ -26,16 +26,25 @@ public class OptionSet implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long optionSetId;
+    
      private String name;
      
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "optionSet")
-    private Set<Option> options = new HashSet<>();
+    private Set<PizzaOption> options = new HashSet<>();
     
     
         @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", nullable = true)
     private PizzaConfig pizzaConfig;
+
+    public PizzaConfig getPizzaConfig() {
+        return pizzaConfig;
+    }
+
+    public void setPizzaConfig(PizzaConfig pizzaConfig) {
+        this.pizzaConfig = pizzaConfig;
+    }
     
 
     public String getName() {
@@ -46,21 +55,23 @@ public class OptionSet implements Serializable {
         this.name = name;
     }
 
-    public Set<Option> getOptions() {
+    public Set<PizzaOption> getOptions() {
         return options;
     }
 
-    public void setOptions(Set<Option> options) {
+    public void setOptions(Set<PizzaOption> options) {
         this.options = options;
     }
 
-    public Long getId() {
-        return id;
+    public Long getOptionSetId() {
+        return optionSetId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOptionSetId(Long optionSetId) {
+        this.optionSetId = optionSetId;
     }
+
+ 
 
     
 

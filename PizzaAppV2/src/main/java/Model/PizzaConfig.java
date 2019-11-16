@@ -24,7 +24,7 @@ public class PizzaConfig implements Serializable{
 
         @Id
           @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long pizzaConfigid;
         
     private double baseprice;   
     private String pizzaSize;
@@ -36,7 +36,7 @@ public class PizzaConfig implements Serializable{
     private Set<OptionSet> optionSets = new HashSet<>();
 
     public PizzaConfig(Long id, double baseprice, String pizzaSize, double delivery, String name) {
-        this.id = id;
+        this.pizzaConfigid = id;
         this.baseprice = baseprice;
         this.pizzaSize = pizzaSize;
         this.delivery = delivery;
@@ -44,11 +44,11 @@ public class PizzaConfig implements Serializable{
     }
 
     public Long getId() {
-        return id;
+        return pizzaConfigid;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.pizzaConfigid = id;
     }
 
     public Set<OptionSet> getOptionSets() {

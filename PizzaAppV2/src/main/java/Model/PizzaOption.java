@@ -8,6 +8,8 @@ package Model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,29 +19,52 @@ import javax.persistence.ManyToOne;
  * @author root
  */
 @Entity
-public class Option implements Serializable{
+public class PizzaOption implements Serializable{
 
+        @Id
+          @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long optionId;
         private String name;
         private double price;
-    @Id
-    private Long id;
+        
+
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = true)
+    @JoinColumn(name = "optionSetId", nullable = true)
     private OptionSet optionSet;
+
+  
     
-        public Option() {
+        public PizzaOption() {
         }
-
-        public Option(String name) {
-            this.name = name;
-        }
-
-        public Option(String name, double price) {
+          public OptionSet getOptionSet() {
+        return optionSet;
+    }
+    public PizzaOption(String name, double price) {
 
             this.name = name;
             this.price = price;
         }
+
+    public void setOptionSet(OptionSet optionSet) {
+        this.optionSet = optionSet;
+    }
+
+    public Long getOptionId() {
+        return optionId;
+    }
+
+    public void setOptionId(Long optionId) {
+        this.optionId = optionId;
+    }
+   
+
+ 
+        public PizzaOption(String name) {
+            this.name = name;
+        }
+
+
 
         public String getName() {
             return name;
@@ -61,11 +86,5 @@ public class Option implements Serializable{
 //        
 //    }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
