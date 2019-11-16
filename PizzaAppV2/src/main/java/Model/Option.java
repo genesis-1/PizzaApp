@@ -5,10 +5,13 @@
  */
 package Model;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author root
  */
+@Entity
 public class Option {
 
         private String name;
