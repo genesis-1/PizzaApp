@@ -5,14 +5,30 @@
  */
 package Model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 /**
  *
  * @author root
  */
-public class OptionSet {
+@Entity
+public class OptionSet implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
      private String name;
      
-    private Option[] choices;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Option> options = new HashSet<>();
     
     
 
