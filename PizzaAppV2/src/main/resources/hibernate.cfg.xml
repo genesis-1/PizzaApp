@@ -12,5 +12,7 @@
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
         <mapping class="Model.PizzaConfig"></mapping>
+        <mapping class="Model.Option"></mapping>
+        <mapping class="Model.OptionSet"></mapping>
     </session-factory>
 </hibernate-configuration>
