@@ -20,12 +20,10 @@ public class TestDrive {
 
 //  StringBuilder build = new StringBuilder();
 //   
-//    public static void main(String[] args) {
-//
-//        // calling menue method
-//        new TestDrive().menue();
-//
-//    }
+    public static void main(String[] args) {
+        
+         Util.getSessionFactory().openSession();
+    }
 //    
 //  PizzaConfig conf = new PizzaConfig();
 //   PizzaConfig pizza = new PizzaConfig();
