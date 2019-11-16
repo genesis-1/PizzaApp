@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Lock</title>
+	<link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	<link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+	<link type="text/css" href="../css/theme.css" rel="stylesheet"/>
+	<link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet"/>
+	<link type="text/css" href='../http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+</h:head>
+    
+   <h:body class="hold-transition lockscreen">
+<!-- Automatic element centering -->
+<div class="lockscreen-wrapper">
+
+  <!-- User name -->
+  <div class="lockscreen-name">John Doe</div>
+
+  <!-- START LOCK SCREEN ITEM -->
+  <div class="lockscreen-item">
+    <!-- lockscreen image -->
+    <div class="lockscreen-image">
+        <img src="../images/img.jpg" alt="User Image"/>
+    </div>
+    <!-- /.lockscreen-image -->
+
+    <!-- lockscreen credentials (contains the form) -->
+    <h:form class="lockscreen-credentials">
+      <div class="input-group">
+          <h:inputSecret class="form-control" p:placeholder="password"/>
+
+        <div class="input-group-btn">
+            <h:commandButton type="button" class="btn"><i class="fa fa-arrow-circle-right" style="font-size:24px"></i></h:commandButton>>
+        </div>
+      </div>
+    </h:form>
+    <!-- /.lockscreen credentials -->
+
+  </div>
+  <!-- /.lockscreen-item -->
+  <div class="help-block text-center">
+    Enter your password to retrieve your session
+  </div>
+  <div class="text-center">
+    <a href="other-login.xhtml">Or sign in as a different user</a>
+  </div>
+  <div class="lockscreen-footer text-center">
+   <b class="copyright">&copy; 2019 Ibuka </b>All rights reserved.
+  </div>
+</div>
+   </h:body>
+</html>
+
