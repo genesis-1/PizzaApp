@@ -40,13 +40,14 @@ public class OptionSet implements Serializable {
         this.name = name;
     }
 
-    public Option[] getChoices() {
-        return choices;
+    public Set<Option> getOptions() {
+        return options;
     }
 
-    public void setChoices(Option[] choices) {
-        this.choices = choices;
+    public void setOptions(Set<Option> options) {
+        this.options = options;
     }
+
     
 
 //    protected class Option {
