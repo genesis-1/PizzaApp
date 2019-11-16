@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -21,10 +23,11 @@ import javax.persistence.OneToMany;
 public class PizzaConfig implements Serializable{
 
         @Id
+          @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
         
     private double baseprice;   
-    private String size;
+    private String pizzaSize;
     
     private double delivery;
     private String name;
@@ -32,10 +35,10 @@ public class PizzaConfig implements Serializable{
    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pizzaConfig")
     private Set<OptionSet> optionSets = new HashSet<>();
 
-    public PizzaConfig(Long id, double baseprice, String size, double delivery, String name) {
+    public PizzaConfig(Long id, double baseprice, String pizzaSize, double delivery, String name) {
         this.id = id;
         this.baseprice = baseprice;
-        this.size = size;
+        this.pizzaSize = pizzaSize;
         this.delivery = delivery;
         this.name = name;
     }
@@ -60,9 +63,7 @@ public class PizzaConfig implements Serializable{
     public PizzaConfig(){
         
     }
-
- 
-
+    
     public double getBaseprice() {
         return baseprice;
     }
@@ -71,12 +72,12 @@ public class PizzaConfig implements Serializable{
         this.baseprice = baseprice;
     }
 
-    public String getSize() {
-        return size;
+    public String getPizzaSize() {
+        return pizzaSize;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setPizzaSize(String size) {
+        this.pizzaSize = size;
     }
 
     public double getDelivery() {
