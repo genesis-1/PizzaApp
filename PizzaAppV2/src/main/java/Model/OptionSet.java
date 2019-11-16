@@ -11,84 +11,77 @@ package Model;
  */
 public class OptionSet {
      private String name;
+     
     private Option[] choices;
-
     
-    protected String getName() {
+    
+
+    public String getName() {
         return name;
-        
-        
     }
 
-    public OptionSet() {
- 
-    }
-
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    protected Option[] getChoices() {
+    public Option[] getChoices() {
         return choices;
     }
 
-    protected void setChoices(Option[] choices) {
+    public void setChoices(Option[] choices) {
         this.choices = choices;
     }
-
-    protected class Option {
-
-        private String name;
-        private double price;
-
-        public Option() {
-        }
-
-        public Option(String name) {
-            this.name = name;
-        }
-
-        protected Option(String name, double price) {
-
-            this.name = name;
-            this.price = price;
-        }
-
-        protected String getName() {
-            return name;
-        }
-
-        protected void setName(String name) {
-            this.name = name;
-        }
-
-        protected double getPrice() {
-            return price;
-        }
-
-        protected void setPrice(double price) {
-            this.price = price;
-        }
-
-         public void findOPtion(String name){
-        
-    }
     
-    public void deleteOption(){
-        
-    }
+
+//    protected class Option {
+//
+//        private String name;
+//        private double price;
+//
+//        public Option() {
+//        }
+//
+//        public Option(String name) {
+//            this.name = name;
+//        }
+//
+//        protected Option(String name, double price) {
+//
+//            this.name = name;
+//            this.price = price;
+//        }
+//
+//        protected String getName() {
+//            return name;
+//        }
+//
+//        protected void setName(String name) {
+//            this.name = name;
+//        }
+//
+//        protected double getPrice() {
+//            return price;
+//        }
+//
+//        protected void setPrice(double price) {
+//            this.price = price;
+//        }
+//
+//         public void findOPtion(String name){
+//        
+//    }
+//    
+//   // public void deleteOption(){
+//        
+//    }
     
-    public void updateOption(){
-        
-    }
+//    public void updateOption(){
+//        
+//    }
 
     @Override
     public String toString() {
         return super.toString();
     }
     
-
-     
-    }
-
 }
