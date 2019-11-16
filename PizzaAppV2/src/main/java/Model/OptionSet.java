@@ -27,7 +27,7 @@ public class OptionSet implements Serializable {
     private Long id;
      private String name;
      
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "optionSet")
     private Set<Option> options = new HashSet<>();
     
     
