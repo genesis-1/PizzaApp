@@ -17,10 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author root
- */
+
 @Entity
 public class OptionSet implements Serializable {
     
