@@ -44,9 +44,9 @@ public class TestDrive {
         System.out.println("Enter Pizza Name You want here:");
         
         String selected = scanner.nextLine();
-        pizza.setName(selected );
-        System.out.println("Thanks for selecting: " + pizza.getName());
-        System.out.println("What  size of " + pizza.getName() + " Would you like? \n");
+        pizzaConfig.setName(selected );
+        System.out.println("Thanks for selecting: " + pizzaConfig.getName());
+        System.out.println("What  size of " + pizzaConfig.getName() + " Would you like? \n");
         System.out.println("Press 1: for Large =4500Rwf\n");
         System.out.println("Press 2: for Medium =3000Rwf\n");
         System.out.println("Press 3: for Small =1000Rwf\n");
@@ -55,20 +55,20 @@ public class TestDrive {
 
         switch (size) {
             case 1:
-                pizza.setSize("Large");
-                pizza.setBaseprice(4500);
+                pizzaConfig.setSize("Large");
+                pizzaConfig.setBaseprice(4500);
                 price=4500;
                 break;
 
             case 2:
-                pizza.setSize("Medium");
-                pizza.setBaseprice(3000);
+                pizzaConfig.setSize("Medium");
+                pizzaConfig.setBaseprice(3000);
                 price=3000;
                 break;
 
             case 3:
-                pizza.setSize("Small");
-                pizza.setBaseprice(1000);
+                pizzaConfig.setSize("Small");
+                pizzaConfig.setBaseprice(1000);
                 price=1000;
   
         }
@@ -77,14 +77,14 @@ public class TestDrive {
         //Delivery or east-in checking
         boolean terminate = false;
         while(!terminate){
-        System.out.println("Do you want to Delivery? \n Enter YES or NO"+ " :"+"There is Charges for Derivering: 1000rwf" );
+        System.out.println("Do you want it to be Delivered? \n Enter YES or NO"+ " :"+"There is Charges for Derivering: 1000rwf" );
         String delivery = scanner.next();
 
         if (delivery.toUpperCase().equals("YES")) {
               
             totalPrice = price+1000;
             double amount =1000;
-            pizza.setDelivery(amount);
+            pizzaConfig.setDelivery(amount);
            System.out.println("Total Price is: "+totalPrice);
            terminate =true;
         }
@@ -94,7 +94,7 @@ public class TestDrive {
             totalPrice = price;
             double amount =0.0;
             System.out.println("TotalPrice is : "+totalPrice);
-            pizza.setDelivery(amount);
+            pizzaConfig.setDelivery(amount);
             terminate =true;
         }else{
             System.err.println("No match.");
@@ -103,7 +103,7 @@ public class TestDrive {
         }
         
         //Calling optionSet
-        meatOrVegetableOptionSet(pizza,totalPrice);
+        meatOrVegetableOptionSet(pizzaConfig,totalPrice);
     }
 
     public void meatOrVegetableOptionSet(PizzaConfig config,double totalPrice) {
@@ -219,13 +219,13 @@ public class TestDrive {
         System.out.println("----------------------------------------------------------");
         System.out.println("This is your Requested Pizza Order:");
         System.out.println("----------------------------------------------------------");
-        System.out.println("Pizza Name: "+pizza.getName());
-        System.out.println("Pizza Size: "+pizza.getSize());
-                System.out.println("Pizza Price: "+pizza.getBaseprice());
-        double basePrice = pizza.getBaseprice();
-        System.out.println("Pizza Derrivering Charge:"+pizza.getDelivery());
-        Double deriver = pizza.getDelivery();
-        System.out.println("This "+pizza.getName() +" Will Be Made Of: \n"+build);
+        System.out.println("Pizza Name: "+pizzaConfig.getName());
+        System.out.println("Pizza Size: "+pizzaConfig.getSize());
+                System.out.println("Pizza Price: "+pizzaConfig.getBaseprice());
+        double basePrice = pizzaConfig.getBaseprice();
+        System.out.println("Pizza Derrivering Charge:"+pizzaConfig.getDelivery());
+        Double deriver = pizzaConfig.getDelivery();
+        System.out.println("This "+pizzaConfig.getName() +" Will Be Made Of: \n"+build);
         double totalAmount = basePrice + deriver;
         System.out.println("Total Amount To Pay :"+totalAmount);
         System.out.println("----------------------------------------------------------");

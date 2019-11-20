@@ -7,13 +7,12 @@ package Model;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Ntwali
- */
+
+@Entity
 
 public class PizzaConfig implements Serializable{
     
+   
     
     private double baseprice;   
     private String size;
