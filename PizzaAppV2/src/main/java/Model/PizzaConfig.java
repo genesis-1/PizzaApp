@@ -19,8 +19,11 @@ import javax.persistence.OneToMany;
 @Entity
 public class PizzaConfig implements Serializable{
 
-        @Id
-          @GeneratedValue(strategy = GenerationType.AUTO)
+        
+    
+    @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        
     private Long pizzaConfigid;
         
     private double baseprice;   
