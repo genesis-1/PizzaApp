@@ -11,6 +11,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.OptionSet;
 import Model.PizzaConfig;
+import Model.PizzaOption;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,8 +30,10 @@ public class TestDrive {
 
     }
     
-  PizzaConfig conf = new PizzaConfig();
-   PizzaConfig pizza = new PizzaConfig();
+  PizzaConfig pizzaConfig = new PizzaConfig();
+    List<OptionSet> optionSets =new ArrayList<>();
+    List<PizzaOption> pizzaOptions =new ArrayList<>();
+    
  
     public void menue() {
         System.out.println("WElCome To MoreIsh Pizza Restaurent\n");

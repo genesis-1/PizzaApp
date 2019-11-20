@@ -6,13 +6,12 @@
 package TestDrive;
 
 import Model.Util;
-import Model.Util;
 
 /**
  *
  * @author root
  */
-public class TestDrive {
+public class TestClass {
   
     public static void main(String[] args) {
         System.out.print("starts");
