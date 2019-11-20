@@ -9,11 +9,18 @@ import java.io.Serializable;
 
 
 @Entity
-
 public class PizzaConfig implements Serializable{
     
    
+
+        
     
+    @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        
+    private Long pizzaConfigid;
+        
+
     private double baseprice;   
     private String size;
     

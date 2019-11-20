@@ -1,29 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.mycompany</groupId>
-    <artifactId>PizzaAppV2</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Model;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
+@Entity
+public class PizzaConfig implements Serializable{
+
+        
     
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.3.1.Final</version>
-        </dependency>
+    @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.11</version>
-        </dependency>
+    private Long pizzaConfigid;
         
-</dependencies>
-</project>
+    private double baseprice;   
+    private String pizzaSize;
+    
+    private double delivery;
+    private String name;
+    
+   @OneToMany(fetch = FetchType.LAZY, mappedBy = "pizzaConfig")
+    private Set<OptionSet> optionSets = new HashSet<>();
+
+    public PizzaConfig(Long id, double baseprice, String pizzaSize, double delivery, String name) {
+        this.pizzaConfigid = id;
+        this.baseprice = baseprice;
+        this.pizzaSize = pizzaSize;
+        this.delivery = delivery;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return pizzaConfigid;
+    }
+
+    public void setId(Long id) {
+        this.pizzaConfigid = id;
+    }
+
+    public Set<OptionSet> getOptionSets() {
+        return optionSets;
+    }
+
+    public void setOptionSets(Set<OptionSet> optionSets) {
+        this.optionSets = optionSets;
+    }
+    
+    
+    public PizzaConfig(){
+        
+    }
+    
+    public double getBaseprice() {
+        return baseprice;
+    }
+
+    public void setBaseprice(double baseprice) {
+        this.baseprice = baseprice;
+    }
+
+    public String getPizzaSize() {
+        return pizzaSize;
+    }
+
+    public void setPizzaSize(String size) {
+        this.pizzaSize = size;
+    }
+
+    public double getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(double delivery) {
+        this.delivery = delivery;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    
+//    public void find(String name ){
+//        
+//    }
+//    
+//    public void delete(){
+//        
+//    }
+//    
+//    public void update(){
+//        
+//    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+ 
+}
