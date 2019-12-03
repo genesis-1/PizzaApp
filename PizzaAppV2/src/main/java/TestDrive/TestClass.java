@@ -13,9 +13,9 @@ import Model.Util;
  */
 public class TestClass {
   
-    public static void main(String[] args) {
-        System.out.print("starts");
-         Util.sessionFactory.openSession();
-    }
+//    public static void main(String[] args) {
+//        System.out.print("starts");
+//         Util.sessionFactory.openSession();
+//    }
 
 }

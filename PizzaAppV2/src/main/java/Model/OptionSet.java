@@ -5,10 +5,6 @@
  */
 package Model;
 
-/**
- *
- * @author root
- */
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,84 +26,101 @@ public class OptionSet implements Serializable {
     private Long optionSetId;
     
      private String name;
-    private Option[] choices;
-
+     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "optionSet")
+    private Set<PizzaOption> options = new HashSet<>();
     
-    protected String getName() {
+    
+        @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", nullable = true)
+    private PizzaConfig pizzaConfig;
+
+    public PizzaConfig getPizzaConfig() {
+        return pizzaConfig;
+    }
+
+    public void setPizzaConfig(PizzaConfig pizzaConfig) {
+        this.pizzaConfig = pizzaConfig;
+    }
+    
+
+    public String getName() {
         return name;
-        
-        
     }
 
-    public OptionSet() {
- 
-    }
-
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    protected Option[] getChoices() {
-        return choices;
+    public Set<PizzaOption> getOptions() {
+        return options;
     }
 
-    protected void setChoices(Option[] choices) {
-        this.choices = choices;
+    public void setOptions(Set<PizzaOption> options) {
+        this.options = options;
     }
 
-    protected class Option {
-
-        private String name;
-        private double price;
-
-        public Option() {
-        }
-
-        public Option(String name) {
-            this.name = name;
-        }
-
-        protected Option(String name, double price) {
-
-            this.name = name;
-            this.price = price;
-        }
-
-        protected String getName() {
-            return name;
-        }
-
-        protected void setName(String name) {
-            this.name = name;
-        }
-
-        protected double getPrice() {
-            return price;
-        }
-
-        protected void setPrice(double price) {
-            this.price = price;
-        }
-
-         public void findOPtion(String name){
-        
+    public Long getOptionSetId() {
+        return optionSetId;
     }
+
+    public void setOptionSetId(Long optionSetId) {
+        this.optionSetId = optionSetId;
+    }
+
+ 
+
     
-    public void deleteOption(){
-        
-    }
+
+//    protected class Option {
+//
+//        private String name;
+//        private double price;
+//
+//        public Option() {
+//        }
+//
+//        public Option(String name) {
+//            this.name = name;
+//        }
+//
+//        protected Option(String name, double price) {
+//
+//            this.name = name;
+//            this.price = price;
+//        }
+//
+//        protected String getName() {
+//            return name;
+//        }
+//
+//        protected void setName(String name) {
+//            this.name = name;
+//        }
+//
+//        protected double getPrice() {
+//            return price;
+//        }
+//
+//        protected void setPrice(double price) {
+//            this.price = price;
+//        }
+//
+//         public void findOPtion(String name){
+//        
+//    }
+//    
+//   // public void deleteOption(){
+//        
+//    }
     
-    public void updateOption(){
-        
-    }
+//    public void updateOption(){
+//        
+//    }
 
     @Override
     public String toString() {
         return super.toString();
     }
     
-
-     
-    }
-
 }

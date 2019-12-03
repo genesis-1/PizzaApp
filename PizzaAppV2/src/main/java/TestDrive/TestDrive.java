@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package TestDrive;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -12,8 +12,11 @@ import java.util.logging.Logger;
 import Model.OptionSet;
 import Model.PizzaConfig;
 import Model.PizzaOption;
+import dao.GenericDao;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -31,9 +34,13 @@ public class TestDrive {
     }
     
   PizzaConfig pizzaConfig = new PizzaConfig();
-    List<OptionSet> optionSets =new ArrayList<>();
-    List<PizzaOption> pizzaOptions =new ArrayList<>();
-    
+    Set<OptionSet> optionSets = new HashSet<>();
+    //List<PizzaOption> pizzaOptions =new ArrayList<>();
+    PizzaOption pizzaOption =new PizzaOption();
+    OptionSet optionSet=new OptionSet();
+    GenericDao<OptionSet> gdOs=new GenericDao<>();
+    GenericDao<PizzaConfig>gdpizzaCon=new GenericDao<>();
+    GenericDao<PizzaOption> gdpizzaOpt=new GenericDao<>();
  
     public void menue() {
         System.out.println("WElCome To MoreIsh Pizza Restaurent\n");
@@ -55,19 +62,19 @@ public class TestDrive {
 
         switch (size) {
             case 1:
-                pizzaConfig.setSize("Large");
+                pizzaConfig.setPizzaSize("Large");
                 pizzaConfig.setBaseprice(4500);
                 price=4500;
                 break;
 
             case 2:
-                pizzaConfig.setSize("Medium");
+                pizzaConfig.setPizzaSize("Medium");
                 pizzaConfig.setBaseprice(3000);
                 price=3000;
                 break;
 
             case 3:
-                pizzaConfig.setSize("Small");
+                pizzaConfig.setPizzaSize("Small");
                 pizzaConfig.setBaseprice(1000);
                 price=1000;
   
@@ -120,16 +127,35 @@ public class TestDrive {
             switch (scan.nextInt()) {
 
                 case 1:
-                    String[] meatChoosen = meat();
+                    //String[] meatChoosen = meat();
+                    Set<PizzaOption> pizzaOptions = meat();
                     category = "meat";
                     terminated = true;
-                    config.setOptionsets(category, meatChoosen, totalPrice);
+                   //pizzaOption.setName(category);
+                  //pizzaOptions.add(pizzaOption);
+                    optionSet.setName(category);
+                  optionSet.setOptions(pizzaOptions);
+                  
+                  //optionSets.add(pizzaOptions);
+                   
+                    pizzaConfig.setOptionSets(optionSets);
+                    gdpizzaCon.create(pizzaConfig);
+                    gdOs.create(optionSet);
                     //oset[iset]=config.getDelivery();
                 case 2:
-                    String[] vegetableChoosen = vegetable();
+                    Set<PizzaOption> pizzaOptionVeg = vegetable();
                     category = "vegetable";
                     terminated = true;
-                    config.setOptionsets(category,vegetableChoosen, totalPrice);
+                    //pizzaOption.setName(category);
+                    //pizzaOptionVeg.add(pizzaOption);
+                    optionSet.setName(category);
+                    optionSet.setOptions(pizzaOptionVeg);
+                    pizzaConfig.setOptionSets(optionSets);
+                    gdpizzaCon.create(pizzaConfig);
+                    gdOs.create(optionSet);
+                    //gdpizzaOpt.create(pizzaOption);
+                    
+                    //config.setOptionsets(category,vegetableChoosen, totalPrice);
                     
                     //Here we call requestedOrdering method to dispay pizza requested by customer 
                requestedOrdering();
@@ -139,43 +165,53 @@ public class TestDrive {
     }
 
     // Method for MeatOptions
-    public String[] meat() {
-        String arrayOfMeat[] = new String[12];
+    public Set<PizzaOption> meat() {
+        PizzaOption meOption = new PizzaOption();
+       Set<PizzaOption> sets = new HashSet<>();
         boolean terminated = false;
 
         Scanner scan = new Scanner(System.in);
 
         while (!terminated) {
-            System.out.println("Press 1 For Beef. 2 For Peperoni. 3 For Anchovy. Press 4 For Ham . Press 5 -> go To Vegetable");
+            System.out.println("Press 1 For Beef. 2 For Peperoni. 3 For Anchovy. Press 4 For Ham . Press 5 -> go To Terminate");
             switch (scan.nextInt()) {
                 case 1:
+                    meOption.setName("Beef");
+                    sets.add(meOption);
                     build.append("Beef").append(" ");
                     break;
                 case 2:
-                     build.append("Peperoni").append(" ");
+                    meOption.setName("Peperoni");
+                    sets.add(meOption);
+                    build.append("Peperoni").append(" ");
                     break;
                 case 3:
+                    meOption.setName("Anchovy");
+                    sets.add(meOption);
                     build.append("Anchovy").append(" ");
                     break;
                 case 4:
+                    meOption.setName("Ham");
+                    sets.add(meOption);
                     build.append("Ham").append(" ");
                     break;
                 case 5:
-
+                    //vegetable();
                     terminated = true;
                     break;
             }
 
         }
-        return arrayOfMeat;
+        return sets;
 
     }
     // Method for VegetableOptions
 
 
-    public String[] vegetable() {
+    public Set<PizzaOption> vegetable() {
         int size=1;
-        String arrayOfVegetable[] = new String[12];
+        PizzaOption veOption = new PizzaOption();
+        Set<PizzaOption> sets = new HashSet<>();
         boolean terminated = false;
 
         Scanner scan = new Scanner(System.in);
@@ -183,16 +219,24 @@ public class TestDrive {
             System.out.println("Press 1 For Mushroom. 2 For Union. 3 For Pineaple. 4 for Tomatoes. 5 back to meat. 6 For Finish ");
             switch (scan.nextInt()) {
                 case 1:
+                    veOption.setName("Mushroom");
+                    sets.add(veOption);
                     build.append("Mushroom").append(" ");
                     break;
                 case 2:
+                    veOption.setName("Union");
+                    sets.add(veOption);
                     build.append("Union").append(" ");
                     break;
                 case 3:
+                    veOption.setName("Pineaple");
+                    sets.add(veOption);
                     build.append("Pineaple").append(" ");
                     
                     break;
                 case 4:
+                    veOption.setName("Tomatoes");
+                    sets.add(veOption);
                  build.append("Tomatoes").append(" ");
                     break;
 
@@ -207,7 +251,7 @@ public class TestDrive {
                     break;
             }
         }
-        return arrayOfVegetable;
+        return sets;
     }
 
     //Complete Customer Order Here:
@@ -220,7 +264,7 @@ public class TestDrive {
         System.out.println("This is your Requested Pizza Order:");
         System.out.println("----------------------------------------------------------");
         System.out.println("Pizza Name: "+pizzaConfig.getName());
-        System.out.println("Pizza Size: "+pizzaConfig.getSize());
+        System.out.println("Pizza Size: "+pizzaConfig.getPizzaSize());
                 System.out.println("Pizza Price: "+pizzaConfig.getBaseprice());
         double basePrice = pizzaConfig.getBaseprice();
         System.out.println("Pizza Derrivering Charge:"+pizzaConfig.getDelivery());
