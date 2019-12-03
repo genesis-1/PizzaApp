@@ -10,7 +10,7 @@
         <property name="hibernate.connection.password">12345</property> 
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="Model.PizzaConfig"></mapping>
         <mapping class="Model.PizzaOption"></mapping>
         <mapping class="Model.OptionSet"></mapping>
