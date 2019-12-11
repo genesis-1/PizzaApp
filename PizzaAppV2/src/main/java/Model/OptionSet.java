@@ -8,6 +8,7 @@ package Model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,23 +17,34 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 
 @Entity
 public class OptionSet implements Serializable {
-    
+        @Version
+    private int version;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long optionSetId;
     
      private String name;
+     private boolean isActive;
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
      
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "optionSet")
-    private Set<PizzaOption> options = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "optionSet",cascade=CascadeType.ALL)
+    private Set<PizzaOption> options;
     
     
-        @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = true)
+        @ManyToOne(cascade=CascadeType.ALL)
+    //@JoinColumn(name = "id", nullable = false)
     private PizzaConfig pizzaConfig;
 
     public PizzaConfig getPizzaConfig() {

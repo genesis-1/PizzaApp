@@ -6,6 +6,7 @@
 package Model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 
 /**
  *
@@ -24,13 +26,24 @@ public class PizzaOption implements Serializable{
         @Id
           @GeneratedValue(strategy = GenerationType.AUTO)
     private Long optionId;
+              @Version
+    private int version;
         private String name;
         private double price;
+        private boolean isActive;
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
         
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "optionSetId", nullable = true)
+    @ManyToOne(cascade=CascadeType.ALL)
+    //@JoinColumn(name = "optionSetId", nullable =false)
     private OptionSet optionSet;
 
   

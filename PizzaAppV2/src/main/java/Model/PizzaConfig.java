@@ -8,12 +8,15 @@ package Model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
+import org.hibernate.annotations.ColumnDefault;
 
 
 @Entity
@@ -25,15 +28,29 @@ public class PizzaConfig implements Serializable{
         @GeneratedValue(strategy = GenerationType.AUTO)
         
     private Long pizzaConfigid;
+          @Version
+    private int version;
         
     private double baseprice;   
     private String pizzaSize;
     
     private double delivery;
     private String name;
+    @ColumnDefault("1")
+    private boolean isActive;
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+   
     
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "pizzaConfig")
-    private Set<OptionSet> optionSets = new HashSet<>();
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "pizzaConfig",cascade=CascadeType.ALL)
+    private Set<OptionSet> optionSets;
 
     public PizzaConfig(Long id, double baseprice, String pizzaSize, double delivery, String name) {
         this.pizzaConfigid = id;
@@ -112,7 +129,9 @@ public class PizzaConfig implements Serializable{
 
     @Override
     public String toString() {
-        return super.toString();
+        return "PizzaConfig{" + "name=" + name + '}';
     }
+
+ 
  
 }
